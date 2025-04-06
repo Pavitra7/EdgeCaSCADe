@@ -9,3 +9,6 @@ Support for the RV32I base ISA, the **M** (Multiplication), the **A** (Atomic), 
 
 The full documentation of the core is inside `<repo_root>/docs/comet_doc.pdf`
 
+#EdgeCaSCADe
+
+The cache header of Comet is updated with the logic to monitor and count secret address cache misses (Integrated Logic).
