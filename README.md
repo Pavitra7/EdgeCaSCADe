@@ -9,6 +9,5 @@ Support for the RV32I base ISA, the **M** (Multiplication), the **A** (Atomic), 
 
 The full documentation of the core is inside `<repo_root>/docs/comet_doc.pdf`
 
-#EdgeCaSCADe
-
-The cache header of Comet is updated with the logic to monitor and count secret address cache misses (Integrated Logic).
+# EdgeCaSCADe
+The cache header of Comet is updated with the logic to monitor and count secret address cache misses (Integrated Logic). The Secure Block is the seperate cache controler logic used to derive the MEMTRACE file for monitoring the execution.
