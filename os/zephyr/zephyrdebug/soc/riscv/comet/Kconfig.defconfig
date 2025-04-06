@@ -1,0 +1,33 @@
+# Copyright (c) 2018 - 2019 Antmicro <www.antmicro.com>
+# SPDX-License-Identifier: Apache-2.0
+
+if SOC_COMET
+
+config SOC
+	default "comet"
+	
+config FPU
+	default n
+
+config SYS_CLOCK_HW_CYCLES_PER_SEC
+	default 100000000
+
+config RISCV_SOC_INTERRUPT_INIT
+	default n
+
+config RISCV_HAS_CPU_IDLE
+	default n
+
+config RISCV_HAS_PLIC
+	default n
+	  	
+config NUM_IRQS
+	default 12
+        
+config ATOMIC_OPERATIONS_C
+        default n
+        
+config XIP
+	default n
+	
+endif # SOC_COMET

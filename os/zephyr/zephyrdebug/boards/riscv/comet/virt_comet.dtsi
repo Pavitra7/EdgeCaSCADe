@@ -1,0 +1,171 @@
+/*
+ * Copyright (c) 2020 Cobham Gaisler AB
+ *
+ * SPDX-License-Identifier: Apache-2.0
+ */
+
+/*
+ * This file is based on:
+ *   qemu-system-riscv32 -machine virt,dumpdtb=virt.dtb -smp 8 -m 256
+ *   dtc virt.dtb > virt.dtsi
+ */
+
+/dts-v1/;
+
+/ {
+	#address-cells = < 0x01 >;
+	#size-cells = < 0x01 >;
+	model = "INRIA-Comet";
+	compatible = "INRIA,Comet";
+
+	cpus {
+		#address-cells = < 0x01 >;
+		#size-cells = < 0x00 >;
+
+		cpu@0 {
+		        clock-frequency = <200000000>;
+			device_type = "cpu";
+			reg = < 0x00 >;
+			riscv,isa = "rv32im";
+			status = "okay";
+			compatible = "riscv";
+			timebase-frequency = <32768>;
+
+			hlic0: interrupt-controller {
+				#interrupt-cells = < 0x01 >;
+				interrupt-controller;
+				compatible = "riscv,cpu-intc";
+			};
+		};
+
+		/*cpu@1 {
+			device_type = "cpu";
+			reg = < 0x01 >;
+			status = "okay";
+			compatible = "riscv";
+
+			hlic1: interrupt-controller {
+				#interrupt-cells = < 0x01 >;
+				interrupt-controller;
+				compatible = "riscv,cpu-intc";
+			};
+		};
+
+		cpu@2 {
+			device_type = "cpu";
+			reg = < 0x02 >;
+			status = "okay";
+			compatible = "riscv";
+
+			hlic2: interrupt-controller {
+				#interrupt-cells = < 0x01 >;
+				interrupt-controller;
+				compatible = "riscv,cpu-intc";
+			};
+		};
+
+		cpu@3 {
+			device_type = "cpu";
+			reg = < 0x03 >;
+			status = "okay";
+			compatible = "riscv";
+
+			hlic3: interrupt-controller {
+				#interrupt-cells = < 0x01 >;
+				interrupt-controller;
+				compatible = "riscv,cpu-intc";
+			};
+		};
+
+		cpu@4 {
+			device_type = "cpu";
+			reg = < 0x04 >;
+			status = "okay";
+			compatible = "riscv";
+
+			hlic4: interrupt-controller {
+				#interrupt-cells = < 0x01 >;
+				interrupt-controller;
+				compatible = "riscv,cpu-intc";
+			};
+		};
+
+		cpu@5 {
+			device_type = "cpu";
+			reg = < 0x05 >;
+			status = "okay";
+			compatible = "riscv";
+
+			hlic5: interrupt-controller {
+				#interrupt-cells = < 0x01 >;
+				interrupt-controller;
+				compatible = "riscv,cpu-intc";
+			};
+		};
+
+		cpu@6 {
+			device_type = "cpu";
+			reg = < 0x06 >;
+			status = "okay";
+			compatible = "riscv";
+
+			hlic6: interrupt-controller {
+				#interrupt-cells = < 0x01 >;
+				interrupt-controller;
+				compatible = "riscv,cpu-intc";
+			};
+		};
+
+		cpu@7 {
+			device_type = "cpu";
+			reg = < 0x07 >;
+			status = "okay";
+			compatible = "riscv";
+
+			hlic7: interrupt-controller {
+				#interrupt-cells = < 0x01 >;
+				interrupt-controller;
+				compatible = "riscv,cpu-intc";
+			};
+		};*/
+	};
+
+	ram0: memory@30000 {
+		device_type = "memory";
+		reg = < 0x30000 0x500000 >;
+	};
+
+	soc {
+		#address-cells = < 0x01 >;
+		#size-cells = < 0x01 >;
+		compatible = "simple-bus";
+		ranges;
+               
+               uart0: serial@790 {
+			compatible = "litex,uart0";
+			interrupt-parent = <&hlic0>;
+			interrupts = <1 10>;
+			reg = <0x790 0x18>;
+			reg-names = "control";
+			label = "uart0";
+			status = "okay";
+			current-speed = <215200>;
+		};
+		clint@10 {
+			interrupts-extended = <
+				&hlic0 0x03 &hlic0 0x07
+				/*&hlic1 0x03 &hlic1 0x07
+				&hlic2 0x03 &hlic2 0x07
+				&hlic3 0x03 &hlic3 0x07
+				&hlic4 0x03 &hlic4 0x07
+				&hlic5 0x03 &hlic5 0x07
+				&hlic6 0x03 &hlic6 0x07
+				&hlic7 0x03 &hlic7 0x07*/
+			>;
+			reg = < 0x10 0x300 >;
+			compatible = "riscv,clint0";
+			#interrupt-cells = <1>;
+			interrupt-controller;
+		};
+	};
+};

@@ -1,0 +1,8 @@
+identifier: comet
+name: COMET Emulation
+type: comet
+simulation: comet
+arch: riscv32
+toolchain:
+testing:
+  default: true

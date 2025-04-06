@@ -1,0 +1,9 @@
+# Copyright (c) 2018 - 2019 Antmicro <www.antmicro.com>
+# SPDX-License-Identifier: Apache-2.0
+
+config SOC_COMET
+    bool "Comet SOC"
+	select RISCV
+	select RISCV_MACHINE_TIMER
+	select ATOMIC_OPERATIONS_C if !SMP
+	select ATOMIC_OPERATIONS_BUILTIN if SMP

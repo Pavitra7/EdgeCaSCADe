@@ -1,0 +1,13 @@
+/* SPDX-License-Identifier: Apache-2.0 */
+
+/dts-v1/;
+
+#include "virt_comet.dtsi"
+
+/ {
+	chosen {
+		zephyr,console = &uart0;
+		zephyr,sram = &ram0;
+	};
+	        
+};

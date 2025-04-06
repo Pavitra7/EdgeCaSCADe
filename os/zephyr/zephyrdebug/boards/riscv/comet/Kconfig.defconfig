@@ -1,0 +1,12 @@
+# SPDX-License-Identifier: Apache-2.0
+
+if BOARD_COMET
+
+config BOARD
+	default "comet"
+	
+config MP_NUM_CPUS
+    int
+    default 1
+    
+endif
